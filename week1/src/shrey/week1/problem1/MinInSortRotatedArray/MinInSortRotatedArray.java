@@ -1,0 +1,39 @@
+//                     Method-I: iterative
+
+
+package shrey.week1.problem1.MinInSortRotatedArray;
+
+
+import java.util.Scanner;
+
+public class MinInSortRotatedArray {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int[] arr = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.println(findMin(arr));
+    }
+
+    public static int findMin(int[] arr) {
+        int low = 0, high = arr.length - 1;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] > arr[high]) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+
+        return arr[low];
+    }
+}

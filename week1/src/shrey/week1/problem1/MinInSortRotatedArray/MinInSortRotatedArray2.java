@@ -1,0 +1,38 @@
+//  					Method-II : Using Recursion
+
+package shrey.week1.problem1.MinInSortRotatedArray;
+
+
+
+import java.util.Scanner;
+
+public class MinInSortRotatedArray2 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int[] arr = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.println(findMinRecursive(arr, 0, N - 1));
+    }
+
+    public static int findMinRecursive(int[] arr, int low, int high) {
+        if (low == high) {
+            return arr[low];
+        }
+
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] > arr[high]) {
+            return findMinRecursive(arr, mid + 1, high);
+        } else {
+            return findMinRecursive(arr, low, mid);
+        }
+    }
+}
+
